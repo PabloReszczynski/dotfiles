@@ -1,11 +1,6 @@
-# This is Git's per-user configuration file.
-[user]
-# Please adapt and uncomment the following lines:
-# name = Pablo Reszczynski
-# email = pablo@me.com
 [user]
   name = Pablo Reszczynski
-  email = pablore@me.com
+  email = pablore@live.com
 
 [alias]
   cp = cherry-pick
