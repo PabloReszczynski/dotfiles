@@ -26,5 +26,7 @@
   mnenomicprefix = true
 
 [merge]
-	tool = meld
-	conflictstyle = diff3
+  tool = meld
+  conflictstyle = diff3
+[credential]
+  helper = cache
