@@ -22,12 +22,12 @@ Plugin 'sheerun/vim-polyglot'               " Syntax highlighting
 Plugin 'vim-syntastic/syntastic'            " Syntastic
 Plugin 'ervandew/supertab'                  " Auto complete with Tab
 Plugin 'valloric/youcompleteme'             " YouCompleteMe
+Plugin 'rking/ag.vim'                       " Project Search
 call vundle#end()
 filetype plugin indent on
 
-" Space is leader key
-nnoremap <space> <Nop>
-let mapleader = "\<space>"
+" Comma is leader key
+let mapleader = ","
 
 " Folding
 set foldmethod=indent
@@ -36,6 +36,18 @@ set foldlevel=99
 " mappings
 map <F2> :NERDTreeToggle<CR>
 map <F3> :TagbarToggle<CR>
+
+" save session
+nnoremap <leader>s :mksession<CR>
+
+" open ag.vim
+nnoremap <leader>a :Ag
+
+" CtrlP settings
+let g:ctrlp_match_window = "bottom,order:ttb"
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 " UI
 set nu
@@ -53,9 +65,10 @@ if filereadable(expand("~/.vimrc_bakground"))
 endif
 
 if has("gui_running")
-  let g:airline_theme='base16_google'
-  colorscheme base16-google-dark
+  colorscheme base16-harmonic16-dark
+  let g:airline_theme='base16_harmonic16'
 else
+  let t_Co=256
   let g:airline_theme='base16_shell'
 endif
 
@@ -74,8 +87,16 @@ set smartcase
 nnoremap <C-l> :nohl<CR><C-l>
 
 " Movement
+" move vertically by visual line
 nnoremap j gj
 nnoremap k gk
+
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+
+nnoremap $ <nop>
+nnoremap ^ <nop>
 
 " Backspace
 set backspace=indent,eol,start
@@ -183,7 +204,7 @@ set guioptions-=T "remove tool bar
 set guioptions-=r "remove scroll bar
 set guioptions-=L "remove left scroll bar
 
-set guifont=Hack
+set guifont=Hack\ 12
 
 " PyRun
 function! Python_Eval_VSplit() range
@@ -235,8 +256,6 @@ autocmd filetype lisp,scheme,art setlocal equalprg=~/scmindent.rkt
 "let g:syntastic_check_on_open = 0
 "let g:syntastic_check_on_wq = 1
 
-" Thyme
-nmap <leader>t :!thyme -d<cr>
 " Startup
 "autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p

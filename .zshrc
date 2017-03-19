@@ -1,11 +1,11 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/pablo/.oh-my-zsh
+  export ZSH=/home/pablore/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="myTeme"
+ZSH_THEME="simple"
 
 set editing-mode vi
  HIST_STAMPS="mm/dd/yyyy"
@@ -16,7 +16,7 @@ plugins=(git tmux apt-get git-flow)
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-export NSYSTEM="/home/pablo/Desktop/nsystem64-beta2/"
+#export NSYSTEM="/home/pablo/Desktop/nsystem64-beta2/"
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -98,7 +98,9 @@ alias g++11="g++ -Wall -Wextra -Wno-unused-result -std=c++11 -O2 -o k"
 alias v="vim"
 alias vimrc="vim ~/.vimrc"
 alias zshrc="vim ~/.zshrc"
-alias cat="pygmentize -g"
+alias ccat="pygmentize -g"
+alias open="xdg-open &>/dev/null"
+alias gvim="hide-warnings gvim"
 # Base16 Shell
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1"  ] && [ -s $BASE16_SHELL/profile_helper.sh  ] && eval "$($BASE16_SHELL/profile_helper.sh)"
@@ -109,8 +111,8 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-export NVM_DIR="/home/pablo/.nvm"
+export NVM_DIR="/home/pablore/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 
-. /home/pablo/torch/install/bin/torch-activate
+#. /home/unu/torch/install/bin/torch-activate
