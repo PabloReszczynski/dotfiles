@@ -5,7 +5,8 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="myTeme"
+#ZSH_THEME="myTeme"
+ZSH_THEME="odin"
 
 set editing-mode vi
  HIST_STAMPS="mm/dd/yyyy"
@@ -98,7 +99,8 @@ alias g++11="g++ -Wall -Wextra -Wno-unused-result -std=c++11 -O2 -o k"
 alias v="vim"
 alias vimrc="vim ~/.vimrc"
 alias zshrc="vim ~/.zshrc"
-alias cat="pygmentize -g"
+alias ccat="pygmentize -g"
+alias open="xdg-open &>/dev/null"
 # Base16 Shell
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1"  ] && [ -s $BASE16_SHELL/profile_helper.sh  ] && eval "$($BASE16_SHELL/profile_helper.sh)"

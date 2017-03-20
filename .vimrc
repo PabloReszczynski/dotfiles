@@ -17,11 +17,13 @@ Plugin 'PotatoesMaster/i3-vim-syntax'       " i3
 Plugin 'weynhamz/vim-plugin-minibufexpl'    " Top Buffers
 Plugin 'kien/ctrlp.vim'                     " Fuzzy Finder
 Plugin 'monokrome/vim-testdrive'            " Test Runner for Vim
+Plugin 'jgdavey/tslime.vim'                 " Send to tmux
 Plugin 'tpope/vim-dispatch'                 " Dispatch proceses
 Plugin 'sheerun/vim-polyglot'               " Syntax highlighting
 Plugin 'vim-syntastic/syntastic'            " Syntastic
 Plugin 'ervandew/supertab'                  " Auto complete with Tab
 Plugin 'valloric/youcompleteme'             " YouCompleteMe
+Plugin 'Twinside/vim-haskellConceal'        " Haskell conceal
 call vundle#end()
 filetype plugin indent on
 
@@ -53,7 +55,7 @@ if filereadable(expand("~/.vimrc_bakground"))
 endif
 
 if has("gui_running")
-  let g:airline_theme='base16_google'
+  let g:airline_theme='base16_atelier_heath'
   colorscheme base16-google-dark
 else
   let g:airline_theme='base16_shell'
@@ -109,6 +111,15 @@ let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
 let g:testdrive#use_dispatch=1
 let g:testdrive#always_open_results=1
 
+" Tmux
+" Repeat last command
+nnoremap <Leader>r: call <SID>TmuxRepeat()<CR>
+
+function! s:TmuxRepeat()
+  silent! exec "!tmux select-pane -l && tmux send up enter && tmux select-pane -l"
+  redraw!
+endfunction
+
 " TABS
 set tabstop=2
 set softtabstop=2
@@ -120,7 +131,11 @@ set smartindent
 " Column
 set textwidth=80
 set colorcolumn=81
-highlight ColorColumn ctermbg=darkgray
+highlight ColorColumn ctermbg=darkgrey
+
+" Line
+set cursorline
+highlight clear CursorLine
 
 " Path
 let &path.="src/include,/usr/include/AL,"
