@@ -23,13 +23,13 @@ Plugin 'sheerun/vim-polyglot'               " Syntax highlighting
 Plugin 'vim-syntastic/syntastic'            " Syntastic
 Plugin 'ervandew/supertab'                  " Auto complete with Tab
 Plugin 'valloric/youcompleteme'             " YouCompleteMe
+Plugin 'rking/ag.vim'                       " Project Search
 Plugin 'Twinside/vim-haskellConceal'        " Haskell conceal
 call vundle#end()
 filetype plugin indent on
 
-" Space is leader key
-nnoremap <space> <Nop>
-let mapleader = "\<space>"
+" Comma is leader key
+let mapleader = ","
 
 " Folding
 set foldmethod=indent
@@ -38,6 +38,18 @@ set foldlevel=99
 " mappings
 map <F2> :NERDTreeToggle<CR>
 map <F3> :TagbarToggle<CR>
+
+" save session
+nnoremap <leader>s :mksession<CR>
+
+" open ag.vim
+nnoremap <leader>a :Ag
+
+" CtrlP settings
+let g:ctrlp_match_window = "bottom,order:ttb"
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 " UI
 set nu
@@ -58,6 +70,7 @@ if has("gui_running")
   let g:airline_theme='base16_atelier_heath'
   colorscheme base16-google-dark
 else
+  let t_Co=256
   let g:airline_theme='base16_shell'
 endif
 
@@ -78,6 +91,13 @@ nnoremap <C-l> :nohl<CR><C-l>
 " Movement
 nnoremap j gj
 nnoremap k gk
+
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+
+nnoremap $ <nop>
+nnoremap ^ <nop>
 
 " Backspace
 set backspace=indent,eol,start
@@ -131,11 +151,7 @@ set smartindent
 " Column
 set textwidth=80
 set colorcolumn=81
-highlight ColorColumn ctermbg=darkgrey
-
-" Line
-set cursorline
-highlight clear CursorLine
+highlight ColorColumn ctermbg=darkgray
 
 " Path
 let &path.="src/include,/usr/include/AL,"
